@@ -53,6 +53,18 @@ class GoogleBard(object):
             raise ConnectorError(str(err))
 
 
+def check_payload(payload):
+    updated_payload = {}
+    for key, value in payload.items():
+        if isinstance(value, dict):
+            nested = check_payload(value)
+            if len(nested.keys()) > 0:
+                updated_payload[key] = nested
+        elif value != '' and value is not None:
+            updated_payload[key] = value
+    return updated_payload
+
+
 def create_model_name(model_name):
     if 'models/' in model_name:
         model_name = model_name.split("models/")[1]
@@ -132,7 +144,7 @@ def count_message_token(config, params):
                 "examples": params.get('examples')
             }
         }
-        payload = {k: v for k, v in payload.items() if v is not None and v != ''}
+        payload = check_payload(payload)
         response = gb.make_rest_call(endpoint, 'POST', data=json.dumps(payload), params={})
         return response
     except Exception as err:
@@ -155,7 +167,7 @@ def generate_message(config, params):
             "topP": params.get('topP'),
             "topK": params.get('topK')
         }
-        payload = {k: v for k, v in payload.items() if v is not None and v != ''}
+        payload = check_payload(payload)
         response = gb.make_rest_call(endpoint, 'POST', data=json.dumps(payload), params={})
         return response
     except Exception as err:
