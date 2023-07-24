@@ -1,0 +1,441 @@
+{
+  "name": "google-bard",
+  "version": "1.0.0",
+  "label": "Google Bard",
+  "description": "Google Bard is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": "Miscellaneous",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "description": "Specify the URL of the Google Bard server to connect and perform automated operations.",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://generativelanguage.googleapis.com"
+      },
+      {
+        "title": "API Key",
+        "description": "Specify the API key to access the endpoint to which you will connect and perform the automated operations",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key",
+        "tooltip": "Specify the API key to access the endpoint to which you will connect and perform the automated operations"
+      },
+      {
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified.\nBy default, this option is set to True.",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "list_models",
+      "title": "Get All Model List",
+      "description": "Retrieves a list of all models from Google Bard based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "list_models",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Page Size",
+          "description": "(Optional) Specify the maximum count of records that you want this operation to fetch from FortiNDR Cloud. By default, this option is set to 50, and you can set a maximum value of 1000.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "pageSize",
+          "value": 50
+        },
+        {
+          "title": "PageToken",
+          "description": "(Optional) Specify a PageToken if a previous operation returned a partial result. If the previous response contains a nextPageToken element, the value of the nextPageToken element includes a PageToken parameter that specifies a starting point to use for subsequent calls.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "pageToken"
+        }
+      ],
+      "output_schema": {
+        "models": [
+          {
+            "name": "",
+            "topK": "",
+            "topP": "",
+            "version": "",
+            "description": "",
+            "displayName": "",
+            "temperature": "",
+            "inputTokenLimit": "",
+            "outputTokenLimit": "",
+            "supportedGenerationMethods": []
+          }
+        ],
+        "nextPageToken": ""
+      }
+    },
+    {
+      "operation": "get_model_details",
+      "title": "Get Model Details",
+      "description": "Retrieves information for a specific model from Google Bard based on the model name you have specified.",
+      "category": "investigation",
+      "annotation": "get_model_details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Model Name",
+          "description": "Specify the name of the model based on which you want to retrieve information from Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "placeholder": "For e.g. models/<model_name-version>"
+        }
+      ],
+      "output_schema": {
+        "name": "",
+        "topK": "",
+        "topP": "",
+        "version": "",
+        "description": "",
+        "displayName": "",
+        "temperature": "",
+        "inputTokenLimit": "",
+        "outputTokenLimit": "",
+        "supportedGenerationMethods": []
+      }
+    },
+    {
+      "operation": "generate_text",
+      "title": "Generate Text",
+      "description": "Generates an response from the model based on the model name, text, and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "generate_text",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Model Name",
+          "description": "Specify the name of the model based on which you want to generate text in Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "placeholder": "For e.g. models/<model_name-version>"
+        },
+        {
+          "title": "Text Prompt",
+          "description": "Specify the free-form input text given to the model as a prompt based on which you want to generate text in Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "text",
+          "tooltip": "Given a prompt, the model will generate a TextCompletion response it predicts as the completion of the input text."
+        },
+        {
+          "title": "Safety Settings",
+          "description": "(Optional) Specify the list of unique SafetySetting instances for blocking unsafe content.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "safetySettings",
+          "tooltip": "(Optional) Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each SafetyCategory specified in the safetySettings. If there is no SafetySetting for a given SafetyCategory provided in the list, the API will use the default safety setting for that category."
+        },
+        {
+          "title": "Stop Sequences",
+          "description": "(Optional) Specify the set of character sequences (up to 5) that will stop output generation.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "stopSequences",
+          "tooltip": "(Optional) Note: If specified, it will stop at the first appearance of a stop sequence. The stop sequence will not be included as part of the response."
+        },
+        {
+          "title": "Temperature",
+          "description": "(Optional) Specify the value of the temperature to controls the randomness of the output. Note: The default value varies by model.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "temperature",
+          "placeholder": "For e.g. 0.0 to 1.0",
+          "tooltip": "(Optional) Values can range from [0.0,1.0], inclusive. A value closer to 1.0 will produce responses that are more varied and creative, while a value closer to 0.0 will typically result in more straightforward responses from the model."
+        },
+        {
+          "title": "Candidate Count",
+          "description": "(Optional) Specify the candidate count based on which the number of generated responses to return. Note: This value must be between [1, 8], inclusive. If unset, this will default to 1.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "candidate_count",
+          "value": 1,
+          "placeholder": "For e.g. 1 to 8",
+          "tooltip": "(Optional) Specify the candidate count based on which the number of generated responses to return. Note: This value must be between [1, 8], inclusive. If unset, this will default to 1."
+        },
+        {
+          "title": "Maximum Output Tokens",
+          "description": "(Optional) Specify the maximum number of tokens to include in a candidate. If unset, this will default to 64.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "maxOutputTokens",
+          "value": 64,
+          "tooltip": "(Optional) Specify the maximum number of tokens to include in a candidate. If unset, this will default to 64."
+        },
+        {
+          "title": "Cumulative Probability (TopP)",
+          "description": "(Optional) Specify the maximum cumulative probability of tokens to consider when sampling. Note: The default value varies by model, see the \"topP\" attribute of the Model returned by the \"Get Model Details\" response.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "topP",
+          "tooltip": "(Optional) Model uses combined Top-k and nucleus sampling. Tokens are sorted based on their assigned probabilities so that only the most liekly tokens are considered. Top-k sampling directly limits the maximum number of tokens to consider, while Nucleus sampling limits number of tokens based on the cumulative probability."
+        },
+        {
+          "title": "Token (TopK)",
+          "description": "(Optional) Specify the maximum number of tokens to consider when sampling. Note: The default value varies by model, see the \"topK\" attribute of the Model returned by the \"Get Model Details\" response.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "topK",
+          "value": 40,
+          "tooltip": "(Optional) Model uses combined Top-k and nucleus sampling. Top-k sampling considers the set of topK most probable tokens. By default, it set to 40."
+        }
+      ],
+      "output_schema": {
+        "candidates": [
+          {
+            "output": "",
+            "safetyRatings": [
+              {
+                "category": "",
+                "probability": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "operation": "generate_embeddings",
+      "title": "Generate Embedding",
+      "description": "Generates an embedding from the model based on the model name and text you have specified.",
+      "category": "investigation",
+      "annotation": "generate_embeddings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Model Name",
+          "description": "Specify the name of the model based on which you want to generate embedding in Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "placeholder": "For e.g. models/<model_name-version>"
+        },
+        {
+          "title": "Text",
+          "description": "Specify the free-form input text that the model will turn into an embedding in Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "text",
+          "tooltip": "Specify the free-form input text that the model will turn into an embedding in Google Bard."
+        }
+      ],
+      "output_schema": {
+        "embedding": {
+          "value": []
+        }
+      }
+    },
+    {
+      "operation": "count_message_token",
+      "title": "Count Message Token",
+      "description": "Retrieves the number of tokens that the model tokenizes the prompt into, based on the model name, message, and other input parameter you have specified.",
+      "category": "investigation",
+      "annotation": "count_message_token",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Model Name",
+          "description": "Specify the name of the model based on which you want to retrieve token from Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "placeholder": "For e.g. models/<model_name-version>"
+        },
+        {
+          "title": "Messages",
+          "description": "Specify the list of messages based on which you want to retrieve token count from Google Bard. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "messages",
+          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages."
+        },
+        {
+          "title": "Context",
+          "description": "(Optional) Specify the context can be a description of your prompt to the model to help provide context and guide the responses. If not empty, this context will be given to the model first before the examples and messages. When using a context be sure to provide it with every request to maintain continuity.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "context",
+          "tooltip": "(Optional) Specify the context can be a description of your prompt to the model to help provide context and guide the responses. Examples: \"Translate the phrase from English to French.\" or \"Given a statement, classify the sentiment as happy, sad or neutral. Note: Anything included in this field will take precedence over message history if the total input size exceeds the model's inputTokenLimit and the input request is truncated."
+        },
+        {
+          "title": "Examples",
+          "description": "(Optional) Specify the list of examples of what the model should generate in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "examples",
+          "tooltip": "(Optional) Specify the list of examples of what the model should generate in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples."
+        }
+      ],
+      "output_schema": {
+        "tokenCount": ""
+      }
+    },
+    {
+      "operation": "generate_message",
+      "title": "Generate Message",
+      "description": "Generates an message from the model based on the model name, messages, and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "generate_message",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Model Name",
+          "description": "Specify the name of the model based on which you want to generate message in Google Bard.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "placeholder": "For e.g. models/<model_name-version>"
+        },
+        {
+          "title": "Messages",
+          "description": "Specify the list of messages based on which you want to generate message in Google Bard. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "messages",
+          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages."
+        },
+        {
+          "title": "Context",
+          "description": "(Optional) Specify the context can be a description of your prompt to the model to help provide context and guide the responses. If not empty, this context will be given to the model first before the examples and messages. When using a context be sure to provide it with every request to maintain continuity.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "context",
+          "tooltip": "(Optional) Specify the context can be a description of your prompt to the model to help provide context and guide the responses. Examples: \"Translate the phrase from English to French.\" or \"Given a statement, classify the sentiment as happy, sad or neutral. Note: Anything included in this field will take precedence over message history if the total input size exceeds the model's inputTokenLimit and the input request is truncated."
+        },
+        {
+          "title": "Examples",
+          "description": "(Optional) Specify the list of examples of what the model should generate message in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "examples",
+          "tooltip": "(Optional) Specify the list of examples of what the model should generate message in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples."
+        },
+        {
+          "title": "Temperature",
+          "description": "(Optional) Specify the value of the temperature to controls the randomness of the output. Note: The default value varies by model.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "temperature",
+          "placeholder": "For e.g. 0.0 to 1.0",
+          "tooltip": "(Optional) Values can range from [0.0,1.0], inclusive. A value closer to 1.0 will produce responses that are more varied and creative, while a value closer to 0.0 will typically result in more straightforward responses from the model."
+        },
+        {
+          "title": "Candidate Count",
+          "description": "(Optional) Specify the candidate count based on which the number of generated responses to return. Note: This value must be between [1, 8], inclusive. If unset, this will default to 1.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "candidate_count",
+          "value": 1,
+          "placeholder": "For e.g. 1 to 8",
+          "tooltip": "(Optional) Specify the candidate count based on which the number of generated responses to return. Note: This value must be between [1, 8], inclusive. If unset, this will default to 1."
+        },
+        {
+          "title": "Cumulative Probability (TopP)",
+          "description": "(Optional) Specify the maximum cumulative probability of tokens to consider when sampling. Note: The default value varies by model, see the \"topP\" attribute of the Model returned by the \"Get Model Details\" response.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "topP",
+          "tooltip": "(Optional) Model uses combined Top-k and nucleus sampling. Tokens are sorted based on their assigned probabilities so that only the most liekly tokens are considered. Top-k sampling directly limits the maximum number of tokens to consider, while Nucleus sampling limits number of tokens based on the cumulative probability."
+        },
+        {
+          "title": "Token (TopK)",
+          "description": "(Optional) Specify the maximum number of tokens to consider when sampling. Note: The default value varies by model, see the \"topK\" attribute of the Model returned by the \"Get Model Details\" response.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "topK",
+          "value": 40,
+          "tooltip": "(Optional) Model uses combined Top-k and nucleus sampling. Top-k sampling considers the set of topK most probable tokens. By default, it set to 40."
+        }
+      ],
+      "output_schema": {
+        "messages": [
+          {
+            "author": "",
+            "content": ""
+          }
+        ],
+        "candidates": [
+          {
+            "author": "",
+            "content": ""
+          }
+        ]
+      }
+    }
+  ]
+}

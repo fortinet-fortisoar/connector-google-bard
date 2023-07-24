@@ -1,0 +1,616 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Google Bard - 1.0.0",
+      "description": "Google Bard is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
+      "visible": true,
+      "image": null,
+      "uuid": "151d4313-f860-4adb-b7c3-e4c3be2d244b",
+      "id": 80,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Google",
+        "google-bard"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Count Message Token",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves the number of tokens that the model tokenizes the prompt into, based on the model name, message, and other input parameter you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689680371,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0b804cd0-4a22-4591-871c-2a026e89b024",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "8fdc8b6e-22d1-45db-a80c-a281278fdcce",
+                "title": "Google Bard: Count Message Token",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "0b804cd0-4a22-4591-871c-2a026e89b024"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Count Message Token",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "name": "models/chat-bison-001",
+                  "context": "",
+                  "examples": "[]",
+                  "messages": "[\n  {\n    \"content\":\"How many tokens?\"\n  },\n  {\n    \"content\": \"For this whole conversation?\"\n  }\n]"
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "count_message_token",
+                "operationTitle": "Count Message Token",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a883e077-e2bd-4a06-bead-a0ae5f315a07"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Count Message Token",
+              "targetStep": "/api/3/workflow_steps/a883e077-e2bd-4a06-bead-a0ae5f315a07",
+              "sourceStep": "/api/3/workflow_steps/0b804cd0-4a22-4591-871c-2a026e89b024",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "208583cf-7371-43b3-8307-3dfeb56b5b97"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "3a6becb1-68e3-4aaa-8b8a-64978c93448f",
+          "id": 798,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Generate Embedding",
+          "aliasName": null,
+          "tag": null,
+          "description": "Generates an embedding from the model based on the model name and text you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689679695,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8f6c586a-e7c0-49a4-9e28-938147fe4e06",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Generate Embedding",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "name": "models/embedding-gecko-001",
+                  "text": "Hello Bard"
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "generate_embeddings",
+                "operationTitle": "Generate Embedding",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "342fffae-1729-4039-a352-b8c52b4a9cea"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "18a05b8b-b560-44d6-9864-3151ca574862",
+                "title": "Google Bard: Generate Embedding",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "8f6c586a-e7c0-49a4-9e28-938147fe4e06"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Generate Embedding",
+              "targetStep": "/api/3/workflow_steps/342fffae-1729-4039-a352-b8c52b4a9cea",
+              "sourceStep": "/api/3/workflow_steps/8f6c586a-e7c0-49a4-9e28-938147fe4e06",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "70a34bc6-5a4c-4025-a4e8-91f19f23331b"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "3f641763-aedf-446f-97f1-bf1e3dc8da07",
+          "id": 797,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Model List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of all models from Google Bard based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689679455,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b63660ab-72c0-4350-a4e5-07e942e88a02",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e338679a-ff5a-4918-8be6-9da4574bd217",
+                "title": "Google Bard: Get All Model List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b63660ab-72c0-4350-a4e5-07e942e88a02"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Model List",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "pageSize": 50,
+                  "pageToken": ""
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "list_models",
+                "operationTitle": "Get All Model List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d8172e4b-5789-430f-9597-f98e8e51d646"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Model List",
+              "targetStep": "/api/3/workflow_steps/d8172e4b-5789-430f-9597-f98e8e51d646",
+              "sourceStep": "/api/3/workflow_steps/b63660ab-72c0-4350-a4e5-07e942e88a02",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "65f7b6d4-4c33-45ab-a7b2-e14bfcd4c69e"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "9c1ac0c2-60be-440f-8f40-a9784eaa8d87",
+          "id": 794,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Model Details",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves information for a specific model from Google Bard based on the model name you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689679006,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f6964256-9fce-4558-aeba-6719d0143729",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Model Details",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "name": "models/chat-bison-001"
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "get_model_details",
+                "operationTitle": "Get Model Details",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4fcfa2e8-cca4-4249-8b94-038456f9d566"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ddc69f5e-4352-4d55-b8b1-96d799def2ce",
+                "title": "Google Bard: Get Model Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f6964256-9fce-4558-aeba-6719d0143729"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Model Details",
+              "targetStep": "/api/3/workflow_steps/4fcfa2e8-cca4-4249-8b94-038456f9d566",
+              "sourceStep": "/api/3/workflow_steps/f6964256-9fce-4558-aeba-6719d0143729",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "51d26cb2-e161-4bf1-b46f-39f9e1ee2778"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "c5cf1202-a9dd-4121-964b-42821ab93b75",
+          "id": 795,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Generate Text",
+          "aliasName": null,
+          "tag": null,
+          "description": "Generates an response from the model based on the model name, text, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689679443,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f8033802-a992-4914-bd95-10a9917c47f4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Generate Text",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "name": "models/text-bison-001",
+                  "text": "Hello Bard",
+                  "topK": 40,
+                  "topP": "",
+                  "temperature": "",
+                  "stopSequences": "",
+                  "safetySettings": "[]",
+                  "candidate_count": 1,
+                  "maxOutputTokens": 64
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "generate_text",
+                "operationTitle": "Generate Text",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "c8921f31-7854-464a-9939-25f613b5bf35"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ba9c7800-4fba-44d3-afe6-9ccbaddf6fcf",
+                "title": "Google Bard: Generate Text",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f8033802-a992-4914-bd95-10a9917c47f4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Generate Text",
+              "targetStep": "/api/3/workflow_steps/c8921f31-7854-464a-9939-25f613b5bf35",
+              "sourceStep": "/api/3/workflow_steps/f8033802-a992-4914-bd95-10a9917c47f4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6365497a-5617-4e4c-9360-b95c33d74b8a"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "d5071829-5b7d-4317-b180-6a218d1df2bd",
+          "id": 796,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Generate Message",
+          "aliasName": null,
+          "tag": null,
+          "description": "Generates an message from the model based on the model name, messages, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1689680526,
+          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/08dcef94-0005-4b76-9d6b-7f0c372f24e6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "11f78762-a206-43d5-8901-6953e5c18674",
+                "title": "Google Bard: Generate Message",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "08dcef94-0005-4b76-9d6b-7f0c372f24e6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Generate Message",
+              "description": null,
+              "arguments": {
+                "name": "Google Bard",
+                "config": "",
+                "params": {
+                  "name": "models/chat-bison-001",
+                  "topK": 40,
+                  "topP": "",
+                  "context": "",
+                  "examples": "[]",
+                  "messages": "[\n  {\n    \"content\":\"hi\"\n  }\n]",
+                  "temperature": "",
+                  "candidate_count": 1
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "generate_message",
+                "operationTitle": "Generate Message",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "cce651e0-f12e-482e-9c14-224b8a13cda0"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Generate Message",
+              "targetStep": "/api/3/workflow_steps/cce651e0-f12e-482e-9c14-224b8a13cda0",
+              "sourceStep": "/api/3/workflow_steps/08dcef94-0005-4b76-9d6b-7f0c372f24e6",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "bd8edc52-b0cf-4e06-841c-c07652f921d9"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "fd35c243-2e49-4ab4-97fd-f3906eb117f5",
+          "id": 799,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Google",
+            "google-bard"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Google",
+    "google-bard"
+  ]
+}
