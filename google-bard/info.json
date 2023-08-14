@@ -65,7 +65,7 @@
           "tooltip": "(Optional) Specify the maximum count of records that you want this operation to fetch from FortiNDR Cloud. By default, this option is set to 50, and you can set a maximum value of 1000."
         },
         {
-          "title": "PageToken",
+          "title": "Page Token",
           "description": "(Optional) Specify a PageToken if a previous operation returned a partial result. If the previous response contains a nextPageToken element, the value of the nextPageToken element includes a PageToken parameter that specifies a starting point to use for subsequent calls.",
           "required": false,
           "editable": true,
