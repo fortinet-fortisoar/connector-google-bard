@@ -163,7 +163,7 @@ def generate_message(config, params):
                 "examples": params.get('examples')
             },
             "temperature": params.get('temperature'),
-            "candidateCount": params.get('candidateCount'),
+            "candidateCount": params.get('candidate_count'),
             "topP": params.get('topP'),
             "topK": params.get('topK')
         }
@@ -180,6 +180,7 @@ def check_health(config):
         if response:
             return True
     except Exception as err:
+        logger.info(str(err))
         raise ConnectorError(str(err))
 
 

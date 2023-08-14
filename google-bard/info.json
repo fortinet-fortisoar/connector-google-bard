@@ -61,7 +61,8 @@
           "visible": true,
           "type": "integer",
           "name": "pageSize",
-          "value": 50
+          "value": 50,
+          "tooltip": "(Optional) Specify the maximum count of records that you want this operation to fetch from FortiNDR Cloud. By default, this option is set to 50, and you can set a maximum value of 1000."
         },
         {
           "title": "PageToken",
@@ -70,7 +71,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "pageToken"
+          "name": "pageToken",
+          "tooltip": "(Optional) Specify a PageToken if a previous operation returned a partial result. If the previous response contains a nextPageToken element, the value of the nextPageToken element includes a PageToken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -159,7 +161,7 @@
           "visible": true,
           "type": "json",
           "name": "safetySettings",
-          "tooltip": "(Optional) Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each SafetyCategory specified in the safetySettings. If there is no SafetySetting for a given SafetyCategory provided in the list, the API will use the default safety setting for that category."
+          "tooltip": "(Optional) Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each SafetyCategory specified in the safetySettings. If there is no SafetySetting for a given SafetyCategory provided in the list, the API will use the default safety setting for that category. For e.g. [{\"category\": \"HARM_CATEGORY_DEROGATORY\", \"probability\": \"NEGLIGIBLE\"}]"
         },
         {
           "title": "Stop Sequences",
@@ -302,7 +304,7 @@
           "visible": true,
           "type": "json",
           "name": "messages",
-          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages."
+          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages. For e.g [{\"content\":\"hi\"}]"
         },
         {
           "title": "Context",
@@ -322,7 +324,7 @@
           "visible": true,
           "type": "json",
           "name": "examples",
-          "tooltip": "(Optional) Specify the list of examples of what the model should generate in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples."
+          "tooltip": "(Optional) Specify the list of examples of what the model should generate in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples. For e.g [{\"input\": {\"author\": \"\", \"content\": \"\", \"citationMetadata\": {\"citationSources\": [{\"startIndex\": \"\",\"endIndex\": \"\", \"uri\": \"\",\"license\": \"\"}]}}]"
         }
       ],
       "output_schema": {
@@ -355,7 +357,7 @@
           "visible": true,
           "type": "json",
           "name": "messages",
-          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages."
+          "tooltip": "Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated: The oldest items will be dropped from messages. For e.g [{\"content\":\"hi\"}]"
         },
         {
           "title": "Context",
@@ -375,7 +377,7 @@
           "visible": true,
           "type": "json",
           "name": "examples",
-          "tooltip": "(Optional) Specify the list of examples of what the model should generate message in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples."
+          "tooltip": "(Optional) Specify the list of examples of what the model should generate message in Google Bard. This includes both user input and the response that the model should emulate. Note: If the total input size exceeds the model's inputTokenLimit the input will be truncated. Items will be dropped from messages before examples. For e.g [{\"input\": {\"author\": \"\", \"content\": \"\", \"citationMetadata\": {\"citationSources\": [{\"startIndex\": \"\",\"endIndex\": \"\", \"uri\": \"\",\"license\": \"\"}]}}]"
         },
         {
           "title": "Temperature",
