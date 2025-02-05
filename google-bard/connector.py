@@ -1,8 +1,9 @@
-""" Copyright start
-  Copyright (C) 2008 - 2023 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2025 Fortinet Inc
+Copyright end
+"""
 
 from .operations import operations, check_health
 from connectors.core.connector import Connector, get_logger, ConnectorError
@@ -10,7 +11,7 @@ from connectors.core.connector import Connector, get_logger, ConnectorError
 logger = get_logger('google-bard')
 
 
-class GoogleBard(Connector):
+class GoogleGemini(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
             action = operations.get(operation)
