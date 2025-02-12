@@ -1,8 +1,9 @@
-""" Copyright start
-  Copyright (C) 2008 - 2023 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2025 Fortinet Inc
+Copyright end
+"""
 
 import requests, json
 from connectors.core.connector import get_logger, ConnectorError
@@ -10,7 +11,7 @@ from connectors.core.connector import get_logger, ConnectorError
 logger = get_logger('google-bard')
 
 
-class GoogleBard(object):
+class GoogleGemini(object):
     def __init__(self, config, *args, **kwargs):
         self.api_key = config.get('api_key')
         url = config.get('server_url').strip('/')
@@ -73,7 +74,7 @@ def create_model_name(model_name):
 
 def list_models(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         endpoint = ''
         query_params = {k: v for k, v in params.items() if v is not None and v != ''}
         response = gb.make_rest_call(endpoint, 'GET', params=query_params)
@@ -84,7 +85,7 @@ def list_models(config, params):
 
 def get_model_details(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name)
         query_params = {k: v for k, v in params.items() if v is not None and v != ''}
@@ -96,7 +97,7 @@ def get_model_details(config, params):
 
 def generate_text(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':generateText'
         payload = {
@@ -120,7 +121,7 @@ def generate_text(config, params):
 
 def generate_embeddings(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':embedText'
         payload = {
@@ -134,7 +135,7 @@ def generate_embeddings(config, params):
 
 def count_message_token(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':countMessageTokens'
         payload = {
@@ -153,7 +154,7 @@ def count_message_token(config, params):
 
 def generate_message(config, params):
     try:
-        gb = GoogleBard(config)
+        gb = GoogleGemini(config)
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':generateMessage'
         payload = {

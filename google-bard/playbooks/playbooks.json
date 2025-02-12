@@ -3,8 +3,8 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Google Bard - 1.0.0",
-      "description": "Google Bard is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
+      "name": "Sample - Google Gemini - 2.0.0",
+      "description": "Google Gemini is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
       "visible": true,
       "image": null,
       "uuid": "151d4313-f860-4adb-b7c3-e4c3be2d244b",
@@ -13,7 +13,7 @@
       "importedBy": [],
       "recordTags": [
         "Google",
-        "google-bard"
+        "google-gemini"
       ],
       "workflows": [
         {
@@ -40,7 +40,7 @@
               "description": null,
               "arguments": {
                 "route": "8fdc8b6e-22d1-45db-a80c-a281278fdcce",
-                "title": "Google Bard: Count Message Token",
+                "title": "Google Gemini: Count Message Token",
                 "resources": [
                   "alerts"
                 ],
@@ -67,7 +67,7 @@
               "name": "Count Message Token",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "name": "models/chat-bison-001",
@@ -111,7 +111,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         },
         {
@@ -137,11 +137,11 @@
               "name": "Generate Embedding",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "name": "models/embedding-gecko-001",
-                  "text": "Hello Bard"
+                  "text": "Hello Gemini"
                 },
                 "version": "1.0.0",
                 "connector": "google-bard",
@@ -163,7 +163,7 @@
               "description": null,
               "arguments": {
                 "route": "18a05b8b-b560-44d6-9864-3151ca574862",
-                "title": "Google Bard: Generate Embedding",
+                "title": "Google Gemini: Generate Embedding",
                 "resources": [
                   "alerts"
                 ],
@@ -207,7 +207,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         },
         {
@@ -216,7 +216,7 @@
           "name": "Get All Model List",
           "aliasName": null,
           "tag": null,
-          "description": "Retrieves a list of all models from Google Bard based on the input parameters you have specified.",
+          "description": "Retrieves a list of all models from Google Gemini based on the input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -234,7 +234,7 @@
               "description": null,
               "arguments": {
                 "route": "e338679a-ff5a-4918-8be6-9da4574bd217",
-                "title": "Google Bard: Get All Model List",
+                "title": "Google Gemini: Get All Model List",
                 "resources": [
                   "alerts"
                 ],
@@ -261,7 +261,7 @@
               "name": "Get All Model List",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "pageSize": 50,
@@ -303,7 +303,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         },
         {
@@ -312,7 +312,7 @@
           "name": "Get Model Details",
           "aliasName": null,
           "tag": null,
-          "description": "Retrieves information for a specific model from Google Bard based on the model name you have specified.",
+          "description": "Retrieves information for a specific model from Google Gemini based on the model name you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -329,7 +329,7 @@
               "name": "Get Model Details",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "name": "models/chat-bison-001"
@@ -354,7 +354,7 @@
               "description": null,
               "arguments": {
                 "route": "ddc69f5e-4352-4d55-b8b1-96d799def2ce",
-                "title": "Google Bard: Get Model Details",
+                "title": "Google Gemini: Get Model Details",
                 "resources": [
                   "alerts"
                 ],
@@ -398,7 +398,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         },
         {
@@ -424,11 +424,11 @@
               "name": "Generate Text",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "name": "models/text-bison-001",
-                  "text": "Hello Bard",
+                  "text": "Hello Gemini",
                   "topK": 40,
                   "topP": "",
                   "temperature": "",
@@ -457,7 +457,7 @@
               "description": null,
               "arguments": {
                 "route": "ba9c7800-4fba-44d3-afe6-9ccbaddf6fcf",
-                "title": "Google Bard: Generate Text",
+                "title": "Google Gemini: Generate Text",
                 "resources": [
                   "alerts"
                 ],
@@ -501,7 +501,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         },
         {
@@ -528,7 +528,7 @@
               "description": null,
               "arguments": {
                 "route": "11f78762-a206-43d5-8901-6953e5c18674",
-                "title": "Google Bard: Generate Message",
+                "title": "Google Gemini: Generate Message",
                 "resources": [
                   "alerts"
                 ],
@@ -555,7 +555,7 @@
               "name": "Generate Message",
               "description": null,
               "arguments": {
-                "name": "Google Bard",
+                "name": "Google Gemini",
                 "config": "",
                 "params": {
                   "name": "models/chat-bison-001",
@@ -603,7 +603,7 @@
           "importedBy": [],
           "recordTags": [
             "Google",
-            "google-bard"
+            "google-gemini"
           ]
         }
       ]
@@ -611,6 +611,6 @@
   ],
   "exported_tags": [
     "Google",
-    "google-bard"
+    "google-gemini"
   ]
 }
