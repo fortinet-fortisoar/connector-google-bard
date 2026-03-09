@@ -3,3 +3,5 @@
 - Removed Generate message and included the functionality within Generate Text
 - Fixed none working code due to discontinuation of old APIs
 - Several enhancements and new parameters for the existing actions
+
+! Documentation needs a major update as several parameters are complex and require detailed explanation.

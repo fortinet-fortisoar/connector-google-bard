@@ -5,6 +5,7 @@
     "description": "Google Gemini is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
     "publisher": "Fortinet",
     "cs_approved": true,
+    "contributor": "Naili.M",
     "cs_compatible": true,
     "help_online": "https://docs.fortinet.com/document/fortisoar/2.1.0/google-gemini/1032/google-gemini-v2.1.0",
     "icon_small_name": "small.png",
