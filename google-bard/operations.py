@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2025 Fortinet Inc
+Copyright (c) 2026 Fortinet Inc
 Copyright end
 """
 
@@ -11,6 +11,7 @@ from connectors.core.connector import get_logger, ConnectorError
 
 logger = get_logger('google-bard')
 logger.setLevel(logging.INFO)
+
 
 class GoogleGemini(object):
     def __init__(self, config, *args, **kwargs):
@@ -99,11 +100,11 @@ def get_model_details(config, params):
 def generate_text(config, params):
     try:
         gb = GoogleGemini(config)
-        model_name = create_model_name(params.pop('name')) 
+        model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':generateContent'
         contents = params.get('contents')
         payload = {
-            "contents": contents if isinstance(contents,list) else [contents],
+            "contents": contents if isinstance(contents, list) else [contents],
             "generationConfig": {
                 "stopSequences": list(params.get('stopSequences')) if params.get('stopSequences') else None,
                 "temperature": float(params.get('temperature')) if params.get('temperature') else None,
@@ -111,27 +112,30 @@ def generate_text(config, params):
                 "topP": float(params.get('topP')) if params.get('topP') else None,
                 "topK": int(params.get('topK')) if params.get('topP') else None
             },
-            "safetySettings": params.get('safetySettings') if isinstance(params.get('safetySettings'),list) else None
+            "safetySettings": params.get('safetySettings') if isinstance(params.get('safetySettings'), list) else None
         }
         system_instruction = params.get('system_instruction')
         if system_instruction:
             payload.update({
-                    "system_instruction": {
-                        "parts": [
-                            {
+                "system_instruction": {
+                    "parts": [
+                        {
                             "text": system_instruction
-                            }
-                        ]
-                    }
+                        }
+                    ]
+                }
             })
-        thinkingLevel = params.get('thinkingLevel')
+        thinkingLevel = params.get('thinkingLevel').lower() if params.get('thinkingLevel') else ""
         if thinkingLevel:
-            payload["generationConfig"].update({
-                "thinkingConfig": {
-                        "includeThoughts": True,
-                        "thinkingLevel": thinkingLevel
-                    }
-            })
+            payload["generationConfig"].update(
+                {
+                    "thinkingConfig":
+                        {
+                            "includeThoughts": True,
+                            "thinkingLevel": thinkingLevel
+                        }
+                }
+            )
         # Clean up empty params
         payload = {k: v for k, v in payload.items() if v is not None}
         if "generationConfig" in payload:
@@ -150,11 +154,11 @@ def generate_embeddings(config, params):
         endpoint = '/{0}'.format(model_name) + ':embedContent'
         content = params.get('content')
         payload = {
-                "content": {
-                    "parts": [
-                    { "text": content }
-                    ]
-                }
+            "content": {
+                "parts": [
+                    {"text": content}
+                ]
+            }
         }
         taskType = params.get('taskType')
         if taskType:
@@ -166,7 +170,7 @@ def generate_embeddings(config, params):
             payload.update({
                 "outputDimensionality": outputDimensionality
             })
-        
+
         response = gb.make_rest_call(endpoint, 'POST', data=json.dumps(payload), params={})
         return response
     except Exception as err:
@@ -179,14 +183,13 @@ def count_message_token(config, params):
         # 'gemini-3.1-flash-lite-preview' or newer model should be used as the old bard models are retired
         model_name = create_model_name(params.pop('name'))
         endpoint = '/{0}'.format(model_name) + ':countTokens'
-        system_instruction = params.get('system_instruction')
         payload = {
             "contents": params.get('messages')
         }
-                    
+
         response = gb.make_rest_call(endpoint, 'POST', data=json.dumps(payload), params={})
         return response
-        
+
     except Exception as err:
         # Better error reporting for debugging API changes
         raise ConnectorError(f"Gemini Token Count Failed: {str(err)}")
