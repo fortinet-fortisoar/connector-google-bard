@@ -1,4 +1,7 @@
-#### Following enhancements have been made to the Google Gemini Connector in version 2.0.0:
+#### Following enhancements have been made to the Google Gemini Connector in version 2.1.0:
 
-- The connector has been renamed from `Google Bard` to `Google Gemini`.
-- The connector logo has been updated.
+- Removed Generate message and included the functionality within Generate Text
+- Fixed none working code due to discontinuation of old APIs
+- Several enhancements and new parameters for the existing actions
+
+! Documentation needs a major update as several parameters are complex and require detailed explanation.

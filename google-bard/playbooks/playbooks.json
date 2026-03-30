@@ -3,12 +3,12 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Google Gemini - 2.0.0",
-      "description": "Google Gemini is a conversational AI chatbot, based initially on the LaMDA family of large language models and later the PaLM LLM.",
+      "name": "Sample - Google Gemini - 2.1.0",
+      "description": "Sample playbooks for \"Google Gemini\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "151d4313-f860-4adb-b7c3-e4c3be2d244b",
-      "id": 80,
+      "id": 60,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -29,11 +29,39 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1689680371,
+          "lastModifyDate": 1773067676,
           "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/0b804cd0-4a22-4591-871c-2a026e89b024",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Count Message Token",
+              "description": null,
+              "arguments": {
+                "name": "Google Gemini",
+                "config": "6ad4eb7f-f6f8-4fa5-80aa-40696873240e",
+                "params": {
+                  "name": "models/gemini-3-flash-preview",
+                  "context": "",
+                  "examples": "[]",
+                  "messages": "[\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Can you check this Python function for errors?\"\n        }\n      ]\n    },\n    {\n      \"role\": \"model\",\n      \"parts\": [\n        {\n          \"text\": \"Of course. Please provide the code snippet.\"\n        }\n      ]\n    },\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"def add(a, b): return a + b\"\n        }\n      ]\n    }\n  ]",
+                  "system_instruction": ""
+                },
+                "version": "2.1.0",
+                "connector": "google-bard",
+                "operation": "count_message_token",
+                "operationTitle": "Count Message Token",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a883e077-e2bd-4a06-bead-a0ae5f315a07"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -61,33 +89,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "0b804cd0-4a22-4591-871c-2a026e89b024"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Count Message Token",
-              "description": null,
-              "arguments": {
-                "name": "Google Gemini",
-                "config": "",
-                "params": {
-                  "name": "models/chat-bison-001",
-                  "context": "",
-                  "examples": "[]",
-                  "messages": "[\n  {\n    \"content\":\"How many tokens?\"\n  },\n  {\n    \"content\": \"For this whole conversation?\"\n  }\n]"
-                },
-                "version": "1.0.0",
-                "connector": "google-bard",
-                "operation": "count_message_token",
-                "operationTitle": "Count Message Token",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "a883e077-e2bd-4a06-bead-a0ae5f315a07"
             }
           ],
           "routes": [
@@ -98,13 +99,16 @@
               "sourceStep": "/api/3/workflow_steps/0b804cd0-4a22-4591-871c-2a026e89b024",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "208583cf-7371-43b3-8307-3dfeb56b5b97"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "3a6becb1-68e3-4aaa-8b8a-64978c93448f",
-          "id": 798,
+          "id": 914,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -127,7 +131,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1689679695,
+          "lastModifyDate": 1773082790,
           "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/8f6c586a-e7c0-49a4-9e28-938147fe4e06",
@@ -138,12 +142,15 @@
               "description": null,
               "arguments": {
                 "name": "Google Gemini",
-                "config": "",
+                "config": "7067906f-cdf3-42ce-84f5-4ebd75642028",
                 "params": {
-                  "name": "models/embedding-gecko-001",
-                  "text": "Hello Gemini"
+                  "name": "models/gemini-embedding-001",
+                  "text": "Hello Gemini",
+                  "content": "The quick brown fox jumps over the lazy dog.",
+                  "taskType": "SEMANTIC_SIMILARITY",
+                  "(Optional), Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (models/embedding-001).": 768
                 },
-                "version": "1.0.0",
+                "version": "2.1.0",
                 "connector": "google-bard",
                 "operation": "generate_embeddings",
                 "operationTitle": "Generate Embedding",
@@ -194,13 +201,16 @@
               "sourceStep": "/api/3/workflow_steps/8f6c586a-e7c0-49a4-9e28-938147fe4e06",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "70a34bc6-5a4c-4025-a4e8-91f19f23331b"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "3f641763-aedf-446f-97f1-bf1e3dc8da07",
-          "id": 797,
+          "id": 915,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -230,6 +240,31 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get All Model List",
+              "description": null,
+              "arguments": {
+                "name": "Google Gemini",
+                "config": "",
+                "params": {
+                  "pageSize": 50,
+                  "pageToken": ""
+                },
+                "version": "1.0.0",
+                "connector": "google-bard",
+                "operation": "list_models",
+                "operationTitle": "Get All Model List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d8172e4b-5789-430f-9597-f98e8e51d646"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -255,31 +290,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "b63660ab-72c0-4350-a4e5-07e942e88a02"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Model List",
-              "description": null,
-              "arguments": {
-                "name": "Google Gemini",
-                "config": "",
-                "params": {
-                  "pageSize": 50,
-                  "pageToken": ""
-                },
-                "version": "1.0.0",
-                "connector": "google-bard",
-                "operation": "list_models",
-                "operationTitle": "Get All Model List",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "d8172e4b-5789-430f-9597-f98e8e51d646"
             }
           ],
           "routes": [
@@ -290,13 +300,16 @@
               "sourceStep": "/api/3/workflow_steps/b63660ab-72c0-4350-a4e5-07e942e88a02",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "65f7b6d4-4c33-45ab-a7b2-e14bfcd4c69e"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "9c1ac0c2-60be-440f-8f40-a9784eaa8d87",
-          "id": 794,
+          "id": 916,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -319,7 +332,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1689679006,
+          "lastModifyDate": 1773082684,
           "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f6964256-9fce-4558-aeba-6719d0143729",
@@ -330,11 +343,11 @@
               "description": null,
               "arguments": {
                 "name": "Google Gemini",
-                "config": "",
+                "config": "7067906f-cdf3-42ce-84f5-4ebd75642028",
                 "params": {
-                  "name": "models/chat-bison-001"
+                  "name": "models/gemini-3.1-flash-lite-preview"
                 },
-                "version": "1.0.0",
+                "version": "2.1.0",
                 "connector": "google-bard",
                 "operation": "get_model_details",
                 "operationTitle": "Get Model Details",
@@ -385,13 +398,16 @@
               "sourceStep": "/api/3/workflow_steps/f6964256-9fce-4558-aeba-6719d0143729",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "51d26cb2-e161-4bf1-b46f-39f9e1ee2778"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "c5cf1202-a9dd-4121-964b-42821ab93b75",
-          "id": 795,
+          "id": 917,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -414,7 +430,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1689679443,
+          "lastModifyDate": 1773078324,
           "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f8033802-a992-4914-bd95-10a9917c47f4",
@@ -425,19 +441,22 @@
               "description": null,
               "arguments": {
                 "name": "Google Gemini",
-                "config": "",
+                "config": "6ad4eb7f-f6f8-4fa5-80aa-40696873240e",
                 "params": {
-                  "name": "models/text-bison-001",
+                  "name": "models/gemini-3-flash-preview",
                   "text": "Hello Gemini",
                   "topK": 40,
-                  "topP": "",
-                  "temperature": "",
-                  "stopSequences": "",
-                  "safetySettings": "[]",
+                  "topP": 0.95,
+                  "contents": "[\n  {\n    \"role\": \"user\",\n    \"parts\": [\n      {\n        \"text\": \"Can you check this Python function for errors?\"\n      }\n    ]\n  },\n  {\n    \"role\": \"model\",\n    \"parts\": [\n      {\n        \"text\": \"Of course. Please provide the code snippet.\"\n      }\n    ]\n  },\n  {\n    \"role\": \"user\",\n    \"parts\": [\n      {\n        \"text\": \"def add(a, b): return a + b\"\n      }\n    ]\n  }\n]",
+                  "temperature": 0.7,
+                  "stopSequences": "[\"END\"]",
+                  "thinkingLevel": "medium",
+                  "safetySettings": "[\n  {\n    \"category\": \"HARM_CATEGORY_HARASSMENT\",\n    \"threshold\": \"BLOCK_MEDIUM_AND_ABOVE\"\n  }\n]",
                   "candidate_count": 1,
-                  "maxOutputTokens": 64
+                  "maxOutputTokens": 100,
+                  "system_instruction": "you are a mathematician"
                 },
-                "version": "1.0.0",
+                "version": "2.1.0",
                 "connector": "google-bard",
                 "operation": "generate_text",
                 "operationTitle": "Generate Text",
@@ -449,7 +468,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "c8921f31-7854-464a-9939-25f613b5bf35"
+              "uuid": "198b36af-fa01-42bc-abf8-df17d3955141"
             },
             {
               "@type": "WorkflowStep",
@@ -483,120 +502,21 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Generate Text",
-              "targetStep": "/api/3/workflow_steps/c8921f31-7854-464a-9939-25f613b5bf35",
+              "name": "Start -> Copy of Generate Text",
+              "targetStep": "/api/3/workflow_steps/198b36af-fa01-42bc-abf8-df17d3955141",
               "sourceStep": "/api/3/workflow_steps/f8033802-a992-4914-bd95-10a9917c47f4",
               "label": null,
               "isExecuted": false,
-              "uuid": "6365497a-5617-4e4c-9360-b95c33d74b8a"
+              "group": null,
+              "uuid": "b8c07c93-ca66-4a84-aaa0-2f83378ff66a"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "d5071829-5b7d-4317-b180-6a218d1df2bd",
-          "id": 796,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "Google",
-            "google-gemini"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Generate Message",
-          "aliasName": null,
-          "tag": null,
-          "description": "Generates an message from the model based on the model name, messages, and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1689680526,
-          "collection": "/api/3/workflow_collections/151d4313-f860-4adb-b7c3-e4c3be2d244b",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/08dcef94-0005-4b76-9d6b-7f0c372f24e6",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "11f78762-a206-43d5-8901-6953e5c18674",
-                "title": "Google Gemini: Generate Message",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "08dcef94-0005-4b76-9d6b-7f0c372f24e6"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Generate Message",
-              "description": null,
-              "arguments": {
-                "name": "Google Gemini",
-                "config": "",
-                "params": {
-                  "name": "models/chat-bison-001",
-                  "topK": 40,
-                  "topP": "",
-                  "context": "",
-                  "examples": "[]",
-                  "messages": "[\n  {\n    \"content\":\"hi\"\n  }\n]",
-                  "temperature": "",
-                  "candidate_count": 1
-                },
-                "version": "1.0.0",
-                "connector": "google-bard",
-                "operation": "generate_message",
-                "operationTitle": "Generate Message",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "cce651e0-f12e-482e-9c14-224b8a13cda0"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Generate Message",
-              "targetStep": "/api/3/workflow_steps/cce651e0-f12e-482e-9c14-224b8a13cda0",
-              "sourceStep": "/api/3/workflow_steps/08dcef94-0005-4b76-9d6b-7f0c372f24e6",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "bd8edc52-b0cf-4e06-841c-c07652f921d9"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "fd35c243-2e49-4ab4-97fd-f3906eb117f5",
-          "id": 799,
+          "id": 918,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
