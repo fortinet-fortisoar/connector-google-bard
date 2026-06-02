@@ -7,7 +7,7 @@
   "cs_approved": true,
   "contributor": "Naili.M",
   "cs_compatible": true,
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/2.1.0/google-gemini/210/google-gemini-v2-1-0",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "category": "Miscellaneous",
@@ -153,7 +153,7 @@
         },
         {
           "title": "Contents",
-          "description": "Specify a JSON object with either a single question or the entire chat history if it's a conversation in the format: [{'parts':[{ 'text': 'free text',... }],'role': (user/model)},...]. Ref: https://ai.google.dev/api/caching#Content",
+          "description": "Specify a JSON object containing either a single question or the complete chat history when providing a conversation in the format: [{'parts':[{ 'text': 'free text',... }],'role': (user/model)},...]. Ref: https://ai.google.dev/api/caching#Content",
           "required": true,
           "editable": true,
           "visible": true,
@@ -167,38 +167,38 @@
             ]
           },
           "name": "contents",
-          "tooltip": "Specify a JSON object with either a single question or the entire chat history if it's a conversation in the format: [{'parts':[{ 'text': 'free text',... }],'role': (user/model)},...]. Ref: https://ai.google.dev/api/caching#Content"
+          "tooltip": "Specify a JSON object containing either a single question or the complete chat history when providing a conversation in the format: [{'parts':[{ 'text': 'free text',... }],'role': (user/model)},...]. Ref: https://ai.google.dev/api/caching#Content"
         },
         {
           "title": "Safety Settings",
-          "description": "(Optional) Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. Ref: https://ai.google.dev/api/generate-content#safetysetting For e.g.: {'category':'HARM_CATEGORY_HARASSMENT','threshold':'BLOCK_ONLY_HIGH'}",
+          "description": "(Optional) Specify a list of unique SafetySetting instances for blocking unsafe content.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "json",
           "name": "safetySettings",
-          "tooltip": "(Optional) Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. Ref: https://ai.google.dev/api/generate-content#safetysetting For e.g.: [{'category':'HARM_CATEGORY_HARASSMENT','threshold':'BLOCK_ONLY_HIGH'}]"
+          "tooltip": "(Optional) Specify a list of unique SafetySetting instances for blocking unsafe content. Note: There should not be more than one setting for each SafetyCategory type. It will block any prompts and responses that fail to meet the thresholds set by these settings. Ref: https://ai.google.dev/api/generate-content#safetysetting For e.g.: [{'category':'HARM_CATEGORY_HARASSMENT','threshold':'BLOCK_ONLY_HIGH'}]"
         },
         {
           "title": "System Instructions",
-          "description": "(Optional) You can guide the behavior of Gemini models with system instructions.",
+          "description": "(Optional) Specify the system instructions used to guide the behavior and responses of Gemini models.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "system_instruction",
           "placeholder": "You are a SOC analyst and you are triaging alerts",
-          "tooltip": "(Optional) You can guide the behavior of Gemini models with system instructions."
+          "tooltip": "(Optional) Specify the system instructions used to guide the behavior and responses of Gemini models."
         },
         {
           "title": "Stop Sequences",
-          "description": "(Optional) Specify a set of character sequences (up to 5) that stop the output generation. e.g. ['END','STOP'...]",
+          "description": "(Optional) Specify a set of character sequences (up to 5) that stop the output generation.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "stopSequences",
-          "tooltip": "(Optional) Specify a set of character sequences (up to 5) that stop the output generation. e.g. ['END','STOP'...]"
+          "tooltip": "(Optional) Specify a set of character sequences (up to 5) that stop the output generation."
         },
         {
           "title": "Temperature",
@@ -213,7 +213,7 @@
         },
         {
           "title": "Maximum Output Tokens",
-          "description": "(Optional) It is a configuration parameter that sets a hard limit on the length of the model's generated response. It is measured in tokens, which are the basic units of text processed by the AI (roughly 4 characters per token in English)..",
+          "description": "(Optional) Specify the maximum number of tokens to include in a candidate. If unset, defaults to 64.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -224,7 +224,7 @@
         },
         {
           "title": "Cumulative Probability (TopP)",
-          "description": "(Optional) Specify the maximum cumulative probability of tokens to consider when sampling. NOTE: The default value varies by model, see the topP attribute of the Model returned by the Get Model Details response.",
+          "description": "(Optional) Specify the maximum cumulative probability of tokens to consider when sampling.  NOTE: The default value varies by model, see the topP attribute of the Model returned by the Get Model Details response",
           "required": false,
           "editable": true,
           "visible": true,
@@ -248,7 +248,7 @@
           "name": "thinkingLevel",
           "type": "select",
           "tooltip": "Gemini models engage in dynamic thinking by default, automatically adjusting the amount of reasoning effort based on the complexity of the user's request. However, if you have specific latency constraints or require the model to engage in deeper reasoning than usual, you can optionally use thinking level to control thinking behavior.",
-          "description": "Gemini models engage in dynamic thinking by default, automatically adjusting the amount of reasoning effort based on the complexity of the user's request. However, if you have specific latency constraints or require the model to engage in deeper reasoning than usual, you can optionally use thinking level to control thinking behavior..",
+          "description": "(Optional) Gemini models use dynamic thinking by default, automatically adjusting their reasoning effort based on the complexity of the user's request. Optionally, you can specify a thinking level to control the amount of reasoning performed when you have specific latency requirements or need deeper reasoning than the default behavior provides.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -296,7 +296,7 @@
     {
       "operation": "generate_embeddings",
       "title": "Generate Embedding",
-      "description": "Generates an embedding from the model based on the model name and text you have specified.",
+      "description": "Generates an embedding from the model based on the model name and content you have specified.",
       "category": "investigation",
       "annotation": "generate_embeddings",
       "enabled": true,
@@ -313,20 +313,20 @@
         },
         {
           "title": "Content",
-          "description": "Specify the free-form input text that the model turns into an embedding.",
+          "description": "Specify the free-form input text that the model turns into an embedding in Google Gemini.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "content",
-          "tooltip": "Specify the free-form input text that the model will turn into an embedding."
+          "tooltip": "Specify the free-form input text that the model turns into an embedding in Google Gemini."
         },
         {
           "title": "Task Type",
           "name": "taskType",
           "type": "select",
-          "tooltip": "Type of task for which the embedding will be used as described here: https://ai.google.dev/api/embeddings#tasktype.",
-          "description": "Type of task for which the embedding will be used as described here: https://ai.google.dev/api/embeddings#tasktype.",
+          "tooltip": "(Optional) Specify the type of task for which the embedding will be used, as described here: https://ai.google.dev/api/embeddings#tasktype.",
+          "description": "(Optional) Specify the type of task for which the embedding will be used, as described here: https://ai.google.dev/api/embeddings#tasktype.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -344,7 +344,7 @@
         },
         {
           "title": "Output Dimensionality",
-          "description": "(Optional), Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (models/embedding-001).",
+          "description": "(Optional) Specify an optional reduced dimensionality for the output embedding. When set, the embedding is truncated to the specified number of dimensions by removing values from the end of the vector. This parameter is supported only by newer embedding models released in 2024 and later and is not supported by the models/embedding-001 model.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -361,7 +361,7 @@
     {
       "operation": "count_message_token",
       "title": "Count Message Token",
-      "description": "Retrieves the number of tokens that the model creates from the prompt based on the model name, message, and other input parameter you have specified.",
+      "description": "Retrieves the number of tokens that the model creates from the prompt based on the model name messages you have specified.",
       "category": "investigation",
       "annotation": "count_message_token",
       "enabled": true,
